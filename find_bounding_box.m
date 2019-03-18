@@ -6,7 +6,6 @@ function cropped_img = find_bounding_box(formatted_img)
     % converting image to black and white
     level = graythresh(opened_img);
     opened_img_bw = (opened_img < level*255 );
-    %opened_img_bw = (opened_img<200);
 
     % using region props to find bounding boxes 
     s = regionprops(opened_img_bw,'BoundingBox','Centroid');

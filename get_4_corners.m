@@ -18,7 +18,6 @@ if corner_locs(min_row_idx, 2) < corner_locs(max_row_idx, 2)
     % lower right has max row
     new_corner_locs(4, :) = corner_locs(max_row_idx, :);
     
-    
 else
     % the image is left leaning
     % upper left has min col

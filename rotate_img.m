@@ -7,7 +7,7 @@ function [rotated_img_final] = rotate_img(projected_img)
 rotated_img_final = 0;
 
 [nrows, ncols] = size(projected_img);
-npix = round(min(nrows, ncols)/4);
+npix = round(min(nrows, ncols)/2);
 
 thetas = [0, 1, 2, 3]; % thetas * 90
 

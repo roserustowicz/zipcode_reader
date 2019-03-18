@@ -1,4 +1,4 @@
-function [projected_img] = project_img_by_corners(img, outer_edge_img)
+function [projected_img] = project_img_by_corners(img, outer_edge_img, sample_name)
 %PROJECT_IMG_BY_CORNERS Finds the outermost corners in an image and 
 % reprojects the image to the full spatial extent of the image space
 
@@ -21,6 +21,7 @@ tform = fitgeotrans(corner_locs, desired_locs, 'projective');
 projected_img = imwarp(img,tform);
 projected_outer_edges = imwarp(outer_edge_img, tform);
 %figure; imshow(projected_outer_edges, []); title('Projected outer edge')
+%saveas(gcf, strcat(sample_name, '_08_projected_outer_edge.jpg'))
 
 % Find new corners and crop image to corners
 new_corners = detectHarrisFeatures(projected_outer_edges);
@@ -33,6 +34,6 @@ max_col = max(new_corner_locs(:, 1));
 
 projected_img = projected_img(min_row:max_row, min_col:max_col);
 %figure; imshow(projected_img, []); title('Cropped projected image')
-
+%saveas(gcf, strcat(sample_name, '_09_cropped_projected_image.jpg'))
 end
 
